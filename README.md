@@ -1,0 +1,16 @@
+# MusicHarvester
+A Youtube browser, video to mp3 converter, and downloader
+
+# Instructions
+1. Use the search bar to find songs (or anything really) on YouTube. Results will show up in a list.
+2. Select a song in the list and choose one of the following:
+  a. Download - downloads the audio of the selected video in mp3 format.
+  b. Play - plays the video in an embeded page.
+  c. Play in Youtube - plays the video on the YouTube site. Useful if there are embed restrictions on the song.
+  d. Play in Browser - plays the video in your default web browser.
+3. You can configure a default download destination in the Options menu.
+4. Enjoy :)
+
+# Note
+* Because Music Harvester uses a free YouTube API key, about 40,000-50,000 requests per day are allowed amongst all users, but it's still free!
+* Email me with suggestions or concerns at mcjcloud@outlook.com, or create an issue on github.
