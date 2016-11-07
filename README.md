@@ -15,3 +15,4 @@ A Youtube browser, video to mp3 converter, and downloader
 * Because Music Harvester uses a free YouTube API key, about 40,000-50,000 requests per day are allowed amongst all users, but it's still free!
 * Email me with suggestions or concerns at mcjcloud@outlook.com, or create an issue on github.
 * the compiled jar file is in the root directory of this project.
+* Java 8 or higher required!
