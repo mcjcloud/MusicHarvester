@@ -4,7 +4,10 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
+import java.net.URI;
+import java.net.URL;
 
+import com.cloud.gui.MusicHarvester;
 import com.eclipsesource.json.Json;
 import com.eclipsesource.json.JsonObject;
 
@@ -15,6 +18,10 @@ import com.eclipsesource.json.JsonObject;
  *
  */
 public class Options {
+	
+	public static final String WIN_PATH = System.getProperty("user.home") + "/harvester_options.json";
+	public static final String LIN_PATH = "~/harvester_options.json";
+	public static final String DEFAULT = "{\"firstLaunch\":true,\"saveDirectory\":\"\"}";
 	
 	private static String json = "";
 	
@@ -43,8 +50,16 @@ public class Options {
 			boolean firstLaunch = object.get("firstLaunch").asBoolean();
 			String saveDirectory = object.get("saveDirectory").asString();
 			
+			// get OS type
+			String os = System.getProperty("os.name");
+			System.out.println("os name: " + os);
+			
 			// write to file.
-			BufferedWriter br = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File("src/data/options.json"))));
+			File optionsFile = new File(os.toLowerCase().contains("windows") ? WIN_PATH : LIN_PATH);		// if it's a windows, use win path, else use linux path.
+			System.out.println("json object.toString(): " + object.toString());
+			
+			// create the writer and write
+			BufferedWriter br = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(optionsFile)));
 			br.write(object.toString());
 			br.flush();
 			br.close();
@@ -58,6 +73,8 @@ public class Options {
 			return true;
 		}
 		catch(Exception e) {
+			e.printStackTrace();
+			System.out.println();
 			return false;
 		}
 	}

@@ -44,12 +44,16 @@ public class OptionsPane {
 		Label pathLabel = new Label("Save Directory");
 		Button setPathButton = new Button("Browse");
 		setPathButton.setOnAction(e -> {
-			// TODO: bring up file chooser
+			// Bring up file chooser
+			
 			DirectoryChooser dirChooser = new DirectoryChooser();
 			dirChooser.setTitle("Choose Save Location");
 			
 			if(Options.getSaveDirectory() != null && !Options.getSaveDirectory().equals("") && (new File(Options.getSaveDirectory()).isDirectory())) {
 				dirChooser.setInitialDirectory(new File(Options.getSaveDirectory()));
+			}
+			else {
+				System.out.println("no save directory: " + Options.getSaveDirectory());
 			}
 			
 			// select the folder and set it as the options' directory.

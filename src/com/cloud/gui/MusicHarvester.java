@@ -25,10 +25,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.MenuBar;
 import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.text.Font;
@@ -48,10 +48,20 @@ public class MusicHarvester extends Application {
 	final int NUM_RESULTS = 25;
 
 	public static void main(String[] args) {
+		
 		// check options json
-		File optionsFile = new File("src/data/options.json");
+		// get OS type
+		String os = System.getProperty("os.name");
+		System.out.println("os name: " + os);
+		
+		// read file.
+		File optionsFile = new File(os.toLowerCase().contains("windows") ? Options.WIN_PATH : Options.LIN_PATH);		// if it's a windows, use win path, else use linux path.
+		
+		System.out.println("read from: " + optionsFile.getAbsolutePath());
 		if(optionsFile.isFile()) {
 			try {
+				System.out.println("is file!");
+				
 				BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(optionsFile)));
 				String options = "";
 				String temp = br.readLine();
@@ -61,14 +71,26 @@ public class MusicHarvester extends Application {
 				}
 				br.close();
 				options = options.replaceAll("\\s", "").replaceAll("\n", "");										// replace all whitespace (I know I could use regex)
+				System.out.println("read options: " + options);
 				
 				// parse json
 				JsonObject json = Json.parse(options).asObject();
+				System.out.println("json as string: " + json.toString());
 				if(!Options.setJson(json.toString())) {
 					AlertBox.display("Alert", "Could not load settings.");
 				}
 				
 			} catch (Exception e) { 
+				e.printStackTrace();
+			}
+		}
+		// file does not exist, create it, and write to it.
+		else {
+			try {
+				optionsFile.createNewFile();
+				Options.setJson(Options.DEFAULT);
+			} 
+			catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
