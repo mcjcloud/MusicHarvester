@@ -19,8 +19,7 @@ import com.eclipsesource.json.JsonObject;
  */
 public class Options {
 	
-	public static final String WIN_PATH = System.getProperty("user.home") + "/harvester_options.json";
-	public static final String LIN_PATH = "~/harvester_options.json";
+	public static final String OPT_PATH = System.getProperty("user.home") + "/harvester_options.json";
 	public static final String DEFAULT = "{\"firstLaunch\":true,\"saveDirectory\":\"\"}";
 	
 	private static String json = "";
@@ -55,7 +54,7 @@ public class Options {
 			System.out.println("os name: " + os);
 			
 			// write to file.
-			File optionsFile = new File(os.toLowerCase().contains("windows") ? WIN_PATH : LIN_PATH);		// if it's a windows, use win path, else use linux path.
+			File optionsFile = new File(Options.OPT_PATH);		// if it's a windows, use win path, else use linux path.
 			System.out.println("json object.toString(): " + object.toString());
 			
 			// create the writer and write

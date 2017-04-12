@@ -55,7 +55,7 @@ public class MusicHarvester extends Application {
 		System.out.println("os name: " + os);
 		
 		// read file.
-		File optionsFile = new File(os.toLowerCase().contains("windows") ? Options.WIN_PATH : Options.LIN_PATH);		// if it's a windows, use win path, else use linux path.
+		File optionsFile = new File(Options.OPT_PATH);		// if it's a windows, use win path, else use linux path.
 		
 		System.out.println("read from: " + optionsFile.getAbsolutePath());
 		if(optionsFile.isFile()) {
