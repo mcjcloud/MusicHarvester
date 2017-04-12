@@ -178,7 +178,6 @@ public class MusicHarvester extends Application {
 		resultsListView.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
 		appPane.setCenter(resultsListView);
 		
-		
 		// setup list of buttons
 		actionPane = new BorderPane();
 		buttonPane = new TilePane(Orientation.VERTICAL);
