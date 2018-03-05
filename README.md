@@ -1,6 +1,9 @@
 # MusicHarvester
 A Youtube browser, video to mp3 converter, and downloader
 
+# NOTE
+This application no longer works because http://youtubeinmp3.com/, which is a dependency of this application, is no longer up.
+
 ### Instructions
 1. Use the search bar to find songs (or anything really) on YouTube. Results will show up in a list.
 2. Select a song in the list and choose one of the following:
