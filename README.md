@@ -1,7 +1,7 @@
 # MusicHarvester
 A Youtube browser, video to mp3 converter, and downloader
 
-# NOTE
+### NOTE
 This application no longer works because http://youtubeinmp3.com/, which is a dependency of this application, is no longer up.
 
 ### Instructions
